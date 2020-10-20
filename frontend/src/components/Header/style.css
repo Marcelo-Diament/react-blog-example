@@ -1,0 +1,26 @@
+.header {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 80px;
+  justify-content: space-between;
+  margin: 0;
+  padding: 16px;
+  position: fixed;
+  width: 100%;
+}
+
+.header-title {
+  flex: 1 1 auto;
+}
+
+.header-nav {
+  flex: 1 1 80%
+}
+
+.header-nav-ul {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
