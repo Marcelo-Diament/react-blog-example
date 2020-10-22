@@ -12,7 +12,7 @@ const Posts = () => {
   return (
     <section className="posts-container">
       <h2 className="posts-container-title">Posts por Usuários</h2>
-      <p className="posts-container-description">Esses posts estão sendo chamados do site <a href="https://jsonplaceholder.typicode.com" target="_blank" rel="noopener noreferrer" title="Acesse o JSON Placeholder">JSON Placeholder</a> - veja o <a href="https://jsonplaceholder.typicode.com" target="_blank" rel="noopener noreferrer" title="Veja o modelo de dados">modelo de dados (JSON)</a> que está sendo utilizado.</p>
+      <p className="posts-container-description">Esses posts estão sendo chamados do site <a href="https://jsonplaceholder.typicode.com" target="_blank" rel="noopener noreferrer" title="Acesse o JSON Placeholder">JSON Placeholder</a> - veja o <a href="https://jsonplaceholder.typicode.com/posts" target="_blank" rel="noopener noreferrer" title="Veja o modelo de dados">modelo de dados (JSON)</a> que está sendo utilizado.</p>
       <nav className="posts-container-controls">
         {users.map(user => <button
           key={user.id}
