@@ -1,12 +1,4 @@
-.posts-content {
-  align-items: stretch;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-}
-
 .posts-content-title {
-  flex: 1 0 100%;
   margin: 24px auto;
 }
 
