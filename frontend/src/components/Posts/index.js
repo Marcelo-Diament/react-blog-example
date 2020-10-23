@@ -1,9 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import Post from './Post'
 import users from './users.json'
 import './style.css'
 
 const Posts = () => {
   const [activeUser, setActiveUser] = useState(-1)
+  const [activePosts, setActivePosts] = useState([])
+
+  useEffect(() => {
+    let queryParameter = activeUser > -1 ? `?userId=${activeUser}` : ''
+
+    fetch(`https://jsonplaceholder.typicode.com/posts${queryParameter}`)
+      .then(response => response.json())
+      .then(json => setActivePosts(json))
+  }, [activeUser])
 
   const handleClick = (userId) => {
     setActiveUser(userId)
@@ -31,15 +41,14 @@ const Posts = () => {
       </nav>
       <article className="posts-content">
         <h2 className="posts-content-title">Posts {activeUser === -1 ? 'de todos os users' : `do user ${activeUser}`}</h2>
+        <section className="posts-content-container">
+          {activePosts.map((post, index) => {
+            return (
+              <Post key={index} {...post} />
+            )
+          })}
+        </section>
       </article>
-      {/* <article className="post-item">
-        <img src={placeholderImg} alt="Imagem de Marcação" width="100%" height="auto" />
-        <h3 className="post-item-title">Nome do Post</h3>
-        <small className="post-item-details">
-          <span className="post-item-details-post-id">Id do Post</span> | <span className="post-item-details-author-id">Id do User</span>
-        </small>
-        <p className="post-item-details-content">Conteúdo</p>
-      </article> */}
     </section>
   )
 }
