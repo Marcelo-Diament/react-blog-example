@@ -1,8 +1,18 @@
 import React, { useState } from 'react'
+import bars from '../../bars-solid.svg'
+import times from '../../times-solid.svg'
 import './style.css'
 
-const Header = () => {
+const Header = ({ currentDevice }) => {
+  let isMobile = currentDevice === 'mobile',
+    isTablet = currentDevice === 'tablet'
+
   const [visitor, setVisitor] = useState('Login')
+  const [activeMenu, setActiveMenu] = useState(false)
+
+  const toggleActiveMenu = () => {
+    setActiveMenu(!activeMenu)
+  }
 
   const authenticateVisitor = () => {
     let userName = prompt('Qual o seu nome?')
@@ -13,9 +23,17 @@ const Header = () => {
   }
 
   return (
-    <header className="header">
+    <header className={`header ${currentDevice}`}>
+      <img
+        src={activeMenu ? times : bars}
+        className={`header-bars ${currentDevice} ${activeMenu ? 'active' : ''}`}
+        onClick={toggleActiveMenu}
+        alt={`${!activeMenu ? 'Abrir Menu' : 'Fechar Menu'}`}
+      />
+
       <h1 className="header-title">header</h1>
-      <nav className="header-nav">
+
+      <nav className={`header-nav ${activeMenu && (isMobile || isTablet) ? 'active-menu' : ''}`}>
         <ul className="header-nav-ul">
           <li className="header-nav-ul-li">
             <a href="#top" title="Home">Home</a>
@@ -31,6 +49,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+      
       <button
         onClick={() => authenticateVisitor()}
       >
